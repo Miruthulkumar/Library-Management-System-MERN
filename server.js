@@ -10,7 +10,14 @@ const Book = require("./bookSchema");
 app.use(express.json()); // Middleware to parse incoming JSON payloads in request bodies
 
 //get all books
-app.get("/library/books", (req, res) => {});
+app.get("/library/books", async (req, res) => {
+  try {
+    const allBooks = await Book.find();
+    res.status(200).json(allBooks);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 //get books by id
 app.get("/library/books/:id", (req, res) => {});
