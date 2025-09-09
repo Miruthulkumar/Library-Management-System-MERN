@@ -20,7 +20,19 @@ app.get("/library/books", async (req, res) => {
 });
 
 //get books by id
-app.get("/library/books/:id", (req, res) => {});
+app.get("/library/books/:id", async (req, res) => {
+  try {
+    const bookById = await Book.findById(req.params.id);
+
+    if (bookById == null) {
+      return res.status(404).json({ error: "Book Not Found" });
+    }
+
+    res.status(200).json(bookById);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 //get book by name
 app.get("/library/books/name/:name", (req, res) => {});
