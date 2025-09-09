@@ -1,12 +1,12 @@
-const express = require("express"); 
-const app = express(); 
-const PORT = 4000; 
+const express = require("express");
+const app = express();
+const PORT = 4000;
 
-const connectDb = require("./db"); 
-connectDb(); 
+const connectDb = require("./db");
+connectDb();
 
 const Book = require("./bookSchema");
-app.use(express.json()); 
+app.use(express.json());
 
 //get all books
 app.get("/library/books", async (req, res) => {
@@ -34,7 +34,19 @@ app.get("/library/books/:id", async (req, res) => {
 });
 
 //get book by name
-app.get("/library/books/name/:name", (req, res) => {});
+app.get("/library/books/name/:name", async (req, res) => {
+  try {
+    const bookByName = await Book.find({ title: req.params.name });
+
+    if (bookByName.length == 0) {
+      return res.status(404).json({ error: "Book Not Found" });
+    }
+
+    res.status(200).json(bookByName);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 //add book
 app.post("/library/books/add", async (req, res) => {
