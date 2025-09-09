@@ -16,16 +16,23 @@ app.get("/library/books", (req, res) => {});
 app.get("/library/books/:id", (req, res) => {});
 
 //get book by name
-app.get("/library/books/:name", (req, res) => {});
+app.get("/library/books/name/:name", (req, res) => {});
 
 //add book
-app.post("/library/books/add", (req, res) => {});
+app.post("/library/books/add", async (req, res) => {
+  try {
+    const newBook = await Book.create(req.body);
+    res.status(201).json(newBook);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 //update a book by id
 app.put("/library/books/update/:id", (req, res) => {});
 
 //delete a book by id
-app.delete("library/books/delete/:id", (req, res) => {});
+app.delete("/library/books/delete/:id", (req, res) => {});
 
 app.listen(PORT, () => {
   console.log(`Server Running at PORT ${PORT}`);
