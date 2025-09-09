@@ -5,9 +5,27 @@ const PORT = 4000; // Define the port number on which the server will listen for
 const connectDb = require("./db"); // Import the connectDb function from the db.js file to establish a database connection
 connectDb(); // Call the connectDb function to connect to the MongoDB database
 
+// Import the Todo schema/model from the todoschema.js file to interact with the todos collection in MongoDB
+const Book = require("./bookSchema");
+app.use(express.json()); // Middleware to parse incoming JSON payloads in request bodies
 
+//get all books
+app.get("/library/books", (req, res) => {});
 
-app.get("/");
+//get books by id
+app.get("/library/books/:id", (req, res) => {});
+
+//get book by name
+app.get("/library/books/:name", (req, res) => {});
+
+//add book
+app.post("/library/books/add", (req, res) => {});
+
+//update a book by id
+app.put("/library/books/update/:id", (req, res) => {});
+
+//delete a book by id
+app.delete("library/books/delete/:id", (req, res) => {});
 
 app.listen(PORT, () => {
   console.log(`Server Running at PORT ${PORT}`);
