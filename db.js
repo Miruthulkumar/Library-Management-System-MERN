@@ -8,7 +8,7 @@ async function connectDb() {
     "mongodb+srv://miruthul:IyLBTWLHTjq9BGmc@cluster0.avtwclw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   );
   // Log a confirmation message to the console once the database connection is successfully established.
-  console.log("Database Connected Successfully!");
+  console.log("Database Connected Successfully ✅!");
 }
 
 // Export the connectDb function so it can be imported and used in other parts of the application, such as the server file.
