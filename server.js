@@ -59,10 +59,32 @@ app.post("/library/books/add", async (req, res) => {
 });
 
 //update a book by id
-app.put("/library/books/update/:id", (req, res) => {});
+app.put("/library/books/update/:id", async (req, res) => {
+  try {
+    const updateBook = await Book.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (updateBook == null) {
+      return res.status(404).send("Book Does not Exist");
+    }
+    res.status(200).json(updateBook);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 //delete a book by id
-app.delete("/library/books/delete/:id", (req, res) => {});
+app.delete("/library/books/delete/:id", async (req, res) => {
+  try {
+    const deleteBook = await Book.findByIdAndDelete(req.params.id);
+    if (deleteBook == null) {
+      return res.status(404).json({ error: "Book Does not Exist" });
+    }
+    res.status(200).send("Book deleted Successfully");
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server Running at PORT ${PORT}`);
