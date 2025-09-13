@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const Book = require("../bookSchema");
+const Book = require("../bookSchema");
 
 //get all books
 router.get("/", async (req, res) => {
