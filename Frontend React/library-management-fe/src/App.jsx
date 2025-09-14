@@ -4,20 +4,22 @@ import StudentTable from "./components/StudentTabel";
 import NameInLine from "./components/NameInLine";
 import FruitsList from "./components/FruitsList";
 import ClickCounterButton from "./components/ClickCounterButton";
-import Misc from "./components/Misc";
+import CountArray from "./components/CountArray";
 
 function App() {
   return (
     <>
-      <NameInLine />
+      {/* <NameInLine /> */}
 
-      <FruitsList />
+      {/* <FruitsList /> */}
 
-      <StudentTable />
+      {/* <StudentTable /> */}
 
       <ClickCounterButton />
 
-      <Misc/>
+      <CountArray/>
+
+      {/* <Misc/> */}
     </>
   );
 }
