@@ -28,6 +28,10 @@
       name:"Rohit",
       dept:"CSE",
       Regno:"091"
+    },{
+      name:"Mahendra prasad",
+      dept:"ECE",
+      Regno:"129"
     }
   ];
 
