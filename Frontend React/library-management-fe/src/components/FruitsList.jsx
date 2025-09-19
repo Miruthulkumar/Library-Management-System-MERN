@@ -1,4 +1,4 @@
-function FruitsList() {
+const FruitsList = () => {
   const fruits = ["Apple 🍎", "Orange 🍊", "PineApple 🍍"];
 
   return (
@@ -8,6 +8,6 @@ function FruitsList() {
       ))}
     </div>
   );
-}
+};
 
 export default FruitsList;

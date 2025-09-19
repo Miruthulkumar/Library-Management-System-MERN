@@ -6,6 +6,7 @@ import FruitsList from "./components/FruitsList";
 import ClickCounterButton from "./components/ClickCounterButton";
 import CountArray from "./components/CountArray";
 import User from "./components/User";
+import Namelist from "./components/NameList";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
       <NameInLine />
 
       <FruitsList />
+
+      <Namelist />
 
       <StudentTable />
 

@@ -1,13 +1,10 @@
-function Misc() {
-  const studentDetails = 
-    {
-      name: "Miruthul kumar M",
-      dept: "ECE",
-      Regno: "133",
-    }
-  ;
-
-const deptfullname = `${studentDetails.dept} [Electronics and Coummunication Engineering]`;
+const Misc = () => {
+  const studentDetails = {
+    name: "Miruthul kumar M",
+    dept: "ECE",
+    Regno: "133",
+  };
+  const deptfullname = `${studentDetails.dept} [Electronics and Coummunication Engineering]`;
 
   return (
     //external css
@@ -20,13 +17,13 @@ const deptfullname = `${studentDetails.dept} [Electronics and Coummunication Eng
           This is an example for inline css
         </h1>
       </a>
-      
+
       <h1>Name:{studentDetails.name}</h1>
       <h1>Department:{studentDetails.dept}</h1>
       <h1>Reg No:{studentDetails.Regno}</h1>
       <h1>Department Full Name : {deptfullname}</h1>
     </div>
   );
-}
+};
 
 export default Misc;
