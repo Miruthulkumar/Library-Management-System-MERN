@@ -26,9 +26,9 @@ const studentDetails = [
   },
 ];
 
-function NameInLine() {
+const NameInLine = () => {
   const nameInLine = `${studentDetails[0].name} is an ${studentDetails[0].dept} student and his Register no is ${studentDetails[0].Regno}`;
   return <h1 class="headers">{nameInLine}</h1>;
-}
+};
 
 export default NameInLine;
