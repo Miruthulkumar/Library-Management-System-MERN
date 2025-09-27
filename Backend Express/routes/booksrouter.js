@@ -30,8 +30,9 @@ router.get("/:id", async (req, res) => {
 //get book by name
 router.get("/name/:name", async (req, res) => {
   try {
-    const bookByName = await Book.find({ title: req.params.name });
-
+    const bookByName = await Book.find({
+      title: { $regex: new RegExp(req.params.name, "i") },
+    });
     if (bookByName.length == 0) {
       return res.status(404).json({ error: "Book Not Found" });
     }
@@ -39,6 +40,19 @@ router.get("/name/:name", async (req, res) => {
     res.status(200).json(bookByName);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+//offset and ... 
+router.get('/search/:start/:end', async (req, res) => {
+  try {
+    const start = parseInt(req.params.start);
+    const end = parseInt(req.params.end);
+
+    const books = await Book.find().skip(start).limit(end - start);
+    res.json(books);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
