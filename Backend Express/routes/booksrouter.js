@@ -43,13 +43,15 @@ router.get("/name/:name", async (req, res) => {
   }
 });
 
-//offset and ... 
-router.get('/search/:start/:end', async (req, res) => {
+//offset and limit...
+router.get("/search/:start/:end", async (req, res) => {
   try {
     const start = parseInt(req.params.start);
     const end = parseInt(req.params.end);
 
-    const books = await Book.find().skip(start).limit(end - start);
+    const books = await Book.find()
+      .skip(start)
+      .limit(end - start);
     res.json(books);
   } catch (err) {
     res.status(500).json({ error: err.message });
