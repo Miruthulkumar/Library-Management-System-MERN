@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Book = require("../bookSchema");
+const jwt = require("jsonwebtoken");
 
 //get all books
 router.get("/", async (req, res) => {
@@ -95,5 +96,8 @@ router.delete("/delete/:id", async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
+
+//login (jsonwebtoken) work in por
+router.post("/login", (req, res) => {});
 
 module.exports = router;
