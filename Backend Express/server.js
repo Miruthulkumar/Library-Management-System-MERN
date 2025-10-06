@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const logTimestamp = require("./middleware/logTimestamp");
 const generalLimiter = require("./middleware/rateLimiter");
+const helmet = require("helmet");
+const responseTime = require("response-time");
 
 const connectDb = require("./db");
 connectDb();
@@ -9,9 +11,13 @@ connectDb();
 // const Book = require("./bookSchema");
 app.use(express.json());
 
+app.use(helmet());
+
 app.use(logTimestamp);
 
 app.use(generalLimiter);
+
+app.use(responseTime());
 
 const bookRoute = require("./routes/booksrouter");
 app.use("/library/books", bookRoute);
