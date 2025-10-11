@@ -8,7 +8,6 @@ const responseTime = require("response-time");
 const connectDb = require("./db");
 connectDb();
 
-// const Book = require("./bookSchema");
 app.use(express.json());
 
 app.use(helmet());
