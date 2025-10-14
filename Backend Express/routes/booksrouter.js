@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Book = require("../bookSchema");
-const jwt = require("jsonwebtoken");
+const checkRole = require("../middleware/authRole");
+
+// Apply checkRole middleware to protect routes
+router.use(checkRole()); // ensure checkRole is a function returning middleware
 
 //get all books
 router.get("/", async (req, res) => {
