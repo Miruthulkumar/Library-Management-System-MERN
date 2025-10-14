@@ -1,31 +1,23 @@
-// import { useState } from "react";
 import "./App.css";
-import StudentTable from "./components/StudentTabel";
-import NameInLine from "./components/NameInLine";
-import FruitsList from "./components/FruitsList";
-import ClickCounterButton from "./components/ClickCounterButton";
-import CountArray from "./components/CountArray";
-import User from "./components/User";
-import Namelist from "./components/NameList";
+import Login from "./components/Login";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Books from "./components/Books";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
     <>
-      <NameInLine />
-
-      <FruitsList />
-
-      <Namelist />
-
-      <StudentTable />
-
-      <ClickCounterButton />
-
-      {/* <CountArray/> */}
-
-      {/* <User/> */}
-
-      {/* <Misc/> */}
+      <div>
+        <Navbar/>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home/>}/>
+          <Route path="/books" element={<Books/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
+        </Routes>
+      </div>
     </>
   );
 }
